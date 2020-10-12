@@ -63,20 +63,30 @@ public class encode
         ArrayList<Character> ch = new ArrayList<Character>();
         for (int i = 0; i < message.length(); i++)
         {
-            ch.add(message.charAt(i));
+            if (message.charAt(i) != 'J')
+              ch.add(message.charAt(i));
+            else
+              ch.add('I');
         }
 
-        for (int x = 0; ch.get(x).equals(ch.get(x+1)) && x % 2 == 0; x++)
+        for (int x = 0; x < ch.size() - 1; x++)
           {
-            int y = ch.size() - 1;
-            ch.add(ch.get(y));
-            while (y > x + 2)
-            {
-              ch.set(y,ch.get(y-1));
-              y--;
-              ch.set(x+1, 'X');
-            }
+            if ((ch.get(x) == ch.get(x + 1)) && (x % 2 == 0))
+              {
+                ArrayList<Character> placeholder = new ArrayList<>(ch);
+                ch.set(x+1, 'X');
+                for (int y = x + 2; y < ch.size(); y++)
+                {
+                  ch.set(y, placeholder.get(y-1));
+                }
+                ch.add(placeholder.get(placeholder.size() - 1));
+              }
           }
+
+        if (ch.size() % 2 == 1 && ch.get(ch.size() - 1) != 'Z')
+          ch.add('Z');
+        if (ch.size() % 2 == 1 && ch.get(ch.size() - 1) == 'Z')
+          ch.add('X');
 
         for (int z = 0; z < ch.size(); z++)
         {
