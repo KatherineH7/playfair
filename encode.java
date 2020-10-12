@@ -8,15 +8,15 @@ public class encode
 {
   public static void main(String[] args)
   {
-    File inFile = null;
-    File inFile2 = null;
+    File ciphertext = null;
+    File keytext = null;
     String message = "";
     String key = "";
 
     if (0 < args.length)
     {
-        inFile = new File(args[0]);
-        inFile2 = new File(args[1]);
+        ciphertext = new File(args[0]);
+        keytext = new File(args[1]);
     }
     else
     {
@@ -30,7 +30,7 @@ public class encode
       {
         String sCurrentLine;
 
-        br = new BufferedReader(new FileReader(inFile));
+        br = new BufferedReader(new FileReader(ciphertext));
 
         while ((sCurrentLine = br.readLine()) != null)
           {
@@ -39,7 +39,7 @@ public class encode
 
           BufferedReader br2 = null;
 
-         br2 = new BufferedReader(new FileReader(inFile2));
+         br2 = new BufferedReader(new FileReader(keytext));
 
          while ((sCurrentLine = br2.readLine()) != null)
            {
