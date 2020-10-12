@@ -35,7 +35,6 @@ public class encode
         while ((sCurrentLine = br.readLine()) != null)
           {
             message += sCurrentLine;
-            System.out.println(sCurrentLine);
           }
 
           BufferedReader br2 = null;
@@ -45,7 +44,6 @@ public class encode
          while ((sCurrentLine = br2.readLine()) != null)
            {
              key += sCurrentLine;
-             System.out.println(sCurrentLine);
            }
 
         }
@@ -72,7 +70,6 @@ public class encode
         message = message.toUpperCase();
         message = message.replaceAll("\\p{Punct}", "");
         message = message.replaceAll("\\d","");
-        System.out.println(message);
 
 
 
@@ -124,8 +121,9 @@ public class encode
           }
         }
 
-        System.out.print(Arrays.deepToString(cipherKey));
+        System.out.println(Arrays.deepToString(cipherKey));
 
+        System.out.print("Final: ");
         for (int x = 0; x < ch.size(); x = x + 2)
         {
           char a = ch.get(x);
