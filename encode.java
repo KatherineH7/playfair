@@ -65,12 +65,9 @@ public class encode
           }
         }
 
-
-
         message = message.toUpperCase();
         message = message.replaceAll("\\p{Punct}", "");
         message = message.replaceAll("\\d","");
-
 
 
         ArrayList<Character> ch = new ArrayList<Character>();
@@ -102,14 +99,6 @@ public class encode
         if (ch.size() % 2 == 1 && ch.get(ch.size() - 1) == 'Z')
           ch.add('X');
 
-        for (int k = 0; k < ch.size(); k++)
-        {
-            if (k % 2 == 0)
-              System.out.print(ch.get(k));
-            else
-              System.out.print(ch.get(k) + " ");
-        }
-
         char[][] cipherKey = new char[5][5];
         int z = 0;
         for (int x = 0; x < 5; x++)
@@ -121,9 +110,7 @@ public class encode
           }
         }
 
-        System.out.println(Arrays.deepToString(cipherKey));
-
-        System.out.print("Final: ");
+        System.out.println("Output: ");
         for (int x = 0; x < ch.size(); x = x + 2)
         {
           char a = ch.get(x);
@@ -163,14 +150,14 @@ public class encode
             {
               if (m == o)
               {
-                System.out.print(cipherKey[m + 1][n]);
-                System.out.print(cipherKey[o + 1][p]);
+                System.out.print(cipherKey[(m + 1) % 5][n]);
+                System.out.print(cipherKey[(o + 1) % 5][p]);
                 System.out.print(" ");
               }
               else
               {
-                System.out.print(cipherKey[m][n + 1]);
-                System.out.print(cipherKey[o][p + 1]);
+                System.out.print(cipherKey[m][(n + 1) % 5 ]);
+                System.out.print(cipherKey[o][(p + 1) % 5 ]);
                 System.out.print(" ");
               }
             }
