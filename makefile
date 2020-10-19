@@ -1,14 +1,8 @@
-encode:encode.class
-	java encode $(ARGS)
+run:Main.class
+	java Main $(ARGS)
 
-encode.class: encode.java
-	javac encode.java
-
-decode:decode.class
-	java decode $(ARGS)
-
-decode.class: decode.java
-	javac decode.java
+Main.class: Main.java
+	javac Main.java
 
 clean:
 	$(RM) *.class
